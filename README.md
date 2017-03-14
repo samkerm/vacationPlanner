@@ -1,86 +1,98 @@
 # vacationPlanner
-This is a tutorial for learning how to use basic animations
+This is a tutorial for learning how to use basic animations.
 
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/appScreenShot.png" /></div>
   
-  当アカウントへ訪れていただき、誠にありがとうございます。第17回アプリ教室では、割り勘アプリを作ります。自分のペースで勉強したい、勉強前に予習したい、内容を復習したい場合、ご利用ください。
+  Thank you for visiting our account. We are going to learn about some basic animations by making a Vacation Planner app login page in an hour. If would you like to study yourself before hands-on, or review what you have learned in the session, please use the following material.
+
+## Meetup
+  We are providing free hands-on on a monthly basis<br>
+  https://www.meetup.com/iOS-Development-Meetup-for-Beginner/
+
+## Do you need a tutor?
+  We also hold face-to-face or group lesson for individual interested in making iOS app themselves<br>
+  http://ios-class-for-beginner.esy.es/
+
+## Development Environment
+  XCode 8.1 / Swift 3
+
+## Full procedure
+
+#### 0, Create your project
+
+> 0-1. Open XCode  
+
+> 0-2. Select "Create a new XCode project"
+
+> 0-3. Select "Single View Application" and then tap "Next"
+
+> 0-4. Fill "Product name" and then tap "Next"
+
+> 0-5. Select the place for saving your project and then tap "Create"
+
+#### 1, Collect photos → Drag & Drop your resources into your project
+  <a href="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif">resources</a>
+<!--   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif" /></div> -->
+
+#### 2, Design app
+> 2-1. Drap & Drop "UIImageView" from UI components
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/2.gif" /></div>
+
+> 2-2. Resize the imageView
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/3.gif" /></div>
+
+> 2-3. Set "Autoresizing" for adjusting frame depending on devices
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/4.gif" /></div>
+
+> 2-5. Specify the image name and content mode
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/5.gif" /></div>
+
+> 2-5. Add UIButton in the same process from 2-1 to 2-3
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/6.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/7.gif" /></div>  
   
-## アプリ教室に興味ある方、歓迎します。  
-  Meetup  
-  http://www.meetup.com/ios-dev-in-namba/
-  
-## 別途アプリ教室(有料)も開いております  
-  http://learning-ios-dev.esy.es/  
+> 2-6. Connect UI components on Storyboard to ViewController.swift
+  ★  control + drag in storyboard to create a control segue<br>
+  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/8.gif" /></div>
 
-## 問い合わせ
-  株式会社ジーライブ
-  http://geelive-inc.com  
+#### 3, Add code blocks in ViewController.swift
+  ★  It's preferable to write following code yourself. It will help you to understand code more.
 
-## アプリ作成手順
-
-#### 0, 開発準備
-> 0-1. xcodeで新規プロジェクトを立ち上げる
-<img src="https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/create_new_project.gif" width="320px">
-
-#### 1, Storyboardで、アプリのデザイン
-> 1-1. main.storyboardを選択し、UI部品から下記を配置します。(ドラッグ&ドロップ)
-- TextView 人数入力
-- TextView 金額入力
-- UILabel 結果出力
-- UIButton 計算実行
-![image](https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/set_uilabel.gif)
-![image](https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/set_button.gif)
-
-> 1-2. Storyboardの下記UI部品を、ViewController.swiftに紐づけます（control押しながらドラッグ）
-- TextView 人数入力
-- TextView 金額入力
-- UILabel 結果出力
-- UIButton 計算実行 (actionで紐付ける)
-![image](https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/tying_button_action.gif)
-![image](https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/tying_textfield.gif)
-![image](https://raw.githubusercontent.com/iosClassForBeginner/XcodeHowToImage/master/Assets/tying_uilabel.gif)
-
-#### 2, ViewController.swiftにコード記述
-- 以下コードブロックを記入
-  
-```Swift
+```Swift  
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var ninzu: UITextField!
-    @IBOutlet weak var kingaku: UITextField!
-    @IBOutlet weak var kekka: UILabel!
-
-    override func viewDidLoad() {
+class ViewController: UIViewController
+{
+    var audioPlayer: AVAudioPlayer!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        // 数字のみ入力できるように設定
-        ninzu.keyboardType = .numberPad
-        kingaku.keyboardType = .numberPad
+        // Get file path
+        let filePath = Bundle.main.path(forResource: "music", ofType: "mp3")
+        let audioPath = URL(fileURLWithPath: filePath!)
+        
+        do {
+            // Initialize audio player
+            audioPlayer = try AVAudioPlayer(contentsOf: audioPath)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Error")
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func tappedPlay(_ sender: Any)
+    {
+        // Play
+        audioPlayer.play()
     }
-
-
-    @IBAction func keisan(_ sender: Any) {
-        // 入力値を取得
-        let intNinzu = Int(ninzu.text!)!
-        let intKingaku = Int(kingaku.text!)!
-
-        // 総金額/人数 = 一人あたり
-        let intKekka = intKingaku / intNinzu
-        // ラベルに結果を表示
-        kekka.text = "\(intKekka)円"
-        
-        // キーボード閉じる
-        ninzu.endEditing(true)
-        kingaku.endEditing(true)
+    
+    @IBAction func tappedStop(_ sender: Any)
+    {
+        // Stop
+        audioPlayer.stop()
     }
 }
-
 ```
