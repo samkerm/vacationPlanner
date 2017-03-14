@@ -34,7 +34,7 @@ This is a tutorial for learning how to use basic animations.
 
 
 #### 1, Collect photos → Drag & Drop your resources into your projects Assets.xcassets
-  <a href="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif">resources</a>
+  <a href="https://github.com/samkerm/vacationPlanner/blob/master/Resourses">resources</a>
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid2.gif" /></div>
 
 #### 2, Design app
@@ -46,21 +46,36 @@ This is a tutorial for learning how to use basic animations.
 
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid3.gif" /></div>
 
-> 2-2. Resize the imageView
+> 2-2. Add username and password textfields to your view
+>> 1. Drap & Drop "UITextField" from UI components
+>> 2. Resize the textField
+>> 3. Add the placeholder text accordingly
+>> 4. Center the placeholder text or align to the left depending on your preference.
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid4.gif" /></div>
 
-> 2-3. Set "Autoresizing" for adjusting frame depending on devices
+> 2-3. Add "Login" button
+>> 1. Drap & Drop "UIButton" from UI components
+>> 2. Change the display text to "Login"
+>> 3. In the attributes inspector change its background color and tint color to your preference
+>> 4. Resize and align the button in your view to the center and below the password textField
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid5.gif" /></div>
 
-> 2-5. Specify the image name and content mode
+> 2-5. Connections
+>> 1. Click on "Assistant Editor" to split the view in two. You will see the code on your right side
+>> 2. Right click (double tap-drag) from your username textField to "ViewController" class right above viewDidLoad() function.
+>> 3. Create an "IBOutlet" and give it a name (eg. "username")
+>> 4. Do the same for password textField and Login button.
+>> 5. In addition to an IBOutlet create an "IBAction" for your login button to do a task when tapped.
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid6.gif" /></div>
 
-> 2-5. Add UIButton in the same process from 2-1 to 2-3
+> 2-5. Create a label for your page and size it right and center it on the view.
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid7.gif" /></div>
-  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid8.gif" /></div>  
   
-> 2-6. Connect UI components on Storyboard to ViewController.swift
-  ★  control + drag in storyboard to create a control segue<br>
+> 2-6. Under the "Size Inspector" apply the following Autoresizing parameters
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid8.gif" /></div>
 
 #### 3, Add code blocks in ViewController.swift
@@ -73,8 +88,8 @@ class ViewController: UIViewController {
 
     // MARK: IB outlets
     
-    @IBOutlet weak var usernameButton: UITextField!
-    @IBOutlet weak var passwordButton: UITextField!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
     // MARK: further UI
@@ -113,8 +128,8 @@ class ViewController: UIViewController {
     // Gets called every time before view appears
     
     override func viewWillAppear(_ animated: Bool) {
-        usernameButton.center.x  -= view.bounds.width
-        passwordButton.center.x -= view.bounds.width
+        username.center.x  -= view.bounds.width
+        password.center.x -= view.bounds.width
         loginButton.center.x -= view.bounds.width
     }
     
@@ -125,11 +140,11 @@ class ViewController: UIViewController {
         spinner.isHidden = true
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.usernameButton.center.x += self.view.bounds.width
+            self.username.center.x += self.view.bounds.width
         })
         
         UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-            self.passwordButton.center.x += self.view.bounds.width
+            self.password.center.x += self.view.bounds.width
         }, completion: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
