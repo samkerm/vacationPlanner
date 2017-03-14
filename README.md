@@ -32,67 +32,109 @@ This is a tutorial for learning how to use basic animations.
 
 #### 1, Collect photos → Drag & Drop your resources into your project
   <a href="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif">resources</a>
-<!--   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif" /></div> -->
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid1.gif" /></div>
 
 #### 2, Design app
 > 2-1. Drap & Drop "UIImageView" from UI components
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/2.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid2.gif" /></div>
 
 > 2-2. Resize the imageView
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/3.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid3.gif" /></div>
 
 > 2-3. Set "Autoresizing" for adjusting frame depending on devices
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/4.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid4.gif" /></div>
 
 > 2-5. Specify the image name and content mode
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/5.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid5.gif" /></div>
 
 > 2-5. Add UIButton in the same process from 2-1 to 2-3
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/6.gif" /></div>
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/7.gif" /></div>  
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid6.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid7.gif" /></div>  
   
 > 2-6. Connect UI components on Storyboard to ViewController.swift
   ★  control + drag in storyboard to create a control segue<br>
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/8.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid8.gif" /></div>
 
 #### 3, Add code blocks in ViewController.swift
   ★  It's preferable to write following code yourself. It will help you to understand code more.
 
 ```Swift  
 import UIKit
-import AVFoundation
 
-class ViewController: UIViewController
-{
-    var audioPlayer: AVAudioPlayer!
+class ViewController: UIViewController {
+
+    // MARK: IB outlets
     
-    override func viewDidLoad()
-    {
+    @IBOutlet weak var usernameButton: UITextField!
+    @IBOutlet weak var passwordButton: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+
+    // MARK: further UI
+    
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+    
+    
+    // MARK: IB actions
+    
+    @IBAction func login(_ sender: Any) {
+       
+        spinner.isHidden = !spinner.isHidden
+        
+    }
+    
+    // MARK: view controller methods
+    
+    
+    // Gets called once during loading of the view
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get file path
-        let filePath = Bundle.main.path(forResource: "music", ofType: "mp3")
-        let audioPath = URL(fileURLWithPath: filePath!)
+        //set up the UI
+        loginButton.layer.cornerRadius = 8.0
+        loginButton.layer.masksToBounds = true
         
-        do {
-            // Initialize audio player
-            audioPlayer = try AVAudioPlayer(contentsOf: audioPath)
-            audioPlayer.prepareToPlay()
-        } catch {
-            print("Error")
-        }
-    }
-
-    @IBAction func tappedPlay(_ sender: Any)
-    {
-        // Play
-        audioPlayer.play()
+        spinner.frame = CGRect(x: -20.0, y: 6.0, width: 20.0, height: 20.0)
+        spinner.startAnimating()
+        spinner.center = CGPoint(x: spinner.bounds.midX + 5.0,
+                                 y: loginButton.bounds.midY)
+        loginButton.addSubview(spinner)
+        
     }
     
-    @IBAction func tappedStop(_ sender: Any)
-    {
-        // Stop
-        audioPlayer.stop()
+    // Gets called every time before view appears
+    
+    override func viewWillAppear(_ animated: Bool) {
+        usernameButton.center.x  -= view.bounds.width
+        passwordButton.center.x -= view.bounds.width
+        loginButton.center.x -= view.bounds.width
     }
+    
+    // Gets called right after the view apears
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        spinner.isHidden = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.usernameButton.center.x += self.view.bounds.width
+        })
+        
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+            self.passwordButton.center.x += self.view.bounds.width
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.loginButton.center.x += self.view.bounds.width
+        }, completion: nil)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
 }
+
 ```
