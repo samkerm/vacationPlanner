@@ -30,26 +30,34 @@ This is a tutorial for learning how to use basic animations.
 
 > 0-5. Select the place for saving your project and then tap "Create"
 
-#### 1, Collect photos → Drag & Drop your resources into your project
-  <a href="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif">resources</a>
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid1.gif" /></div>
 
-#### 2, Design app
-> 2-1. Drap & Drop "UIImageView" from UI components
+
+#### 1, Collect photos → Drag & Drop your resources into your projects Assets.xcassets
+  <a href="https://github.com/iosClassForBeginner/musicPlayer-en/blob/master/Resources/1.gif">resources</a>
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid2.gif" /></div>
 
-> 2-2. Resize the imageView
+#### 2, Design app
+> 2-1. 
+>> 1. Drap & Drop "UIImageView" from UI components
+>> 2. Resize the imageView
+>> 3. Apply constraints
+>> 4. Set the background image
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid3.gif" /></div>
 
-> 2-3. Set "Autoresizing" for adjusting frame depending on devices
+> 2-2. Resize the imageView
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid4.gif" /></div>
 
-> 2-5. Specify the image name and content mode
+> 2-3. Set "Autoresizing" for adjusting frame depending on devices
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid5.gif" /></div>
 
-> 2-5. Add UIButton in the same process from 2-1 to 2-3
+> 2-5. Specify the image name and content mode
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid6.gif" /></div>
-  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid7.gif" /></div>  
+
+> 2-5. Add UIButton in the same process from 2-1 to 2-3
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid7.gif" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid8.gif" /></div>  
   
 > 2-6. Connect UI components on Storyboard to ViewController.swift
   ★  control + drag in storyboard to create a control segue<br>
