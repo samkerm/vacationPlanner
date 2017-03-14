@@ -32,7 +32,6 @@ This is a tutorial for learning how to use basic animations.
 
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid1.gif" /></div>
 
-
 #### 1, Collect photos → Drag & Drop your resources into your projects Assets.xcassets
   <a href="https://github.com/samkerm/vacationPlanner/blob/master/Resourses">resources</a>
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid2.gif" /></div>
@@ -62,7 +61,7 @@ This is a tutorial for learning how to use basic animations.
 
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid5.gif" /></div>
 
-> 2-5. Connections
+> 2-4. Connections
 >> 1. Click on "Assistant Editor" to split the view in two. You will see the code on your right side
 >> 2. Right click (double tap-drag) from your username textField to "ViewController" class right above viewDidLoad() function.
 >> 3. Create an "IBOutlet" and give it a name (eg. "username")
@@ -72,6 +71,7 @@ This is a tutorial for learning how to use basic animations.
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid6.gif" /></div>
 
 > 2-5. Create a label for your page and size it right and center it on the view.
+
   <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/Resources/vid7.gif" /></div>
   
 > 2-6. Under the "Size Inspector" apply the following Autoresizing parameters
@@ -156,7 +156,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
