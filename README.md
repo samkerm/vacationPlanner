@@ -1,9 +1,7 @@
 # vacationPlanner
 This is a tutorial for learning how to use basic animations
-# 第17回: １時間でiPhoneアプリを作ろう
-## 割り勘アプリ
 
-  <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/sampleWarikanApp/blob/master/Assets/sample.png" /></div>
+  <div style="text-align:center"><img src ="https://github.com/samkerm/vacationPlanner/blob/master/appScreenShot.png" /></div>
   
   当アカウントへ訪れていただき、誠にありがとうございます。第17回アプリ教室では、割り勘アプリを作ります。自分のペースで勉強したい、勉強前に予習したい、内容を復習したい場合、ご利用ください。
   
